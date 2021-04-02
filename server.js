@@ -1,8 +1,15 @@
 const express = require("express");
 const connectDB = require("./config/db");
 
+//use express
 const app = express();
+
+//connecting to mongo
 connectDB();
+
+//middleware
+app.use(express.json({ extended: false }));
+
 app.get("/", (req, res) => res.send("api running"));
 
 //define routes
