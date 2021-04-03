@@ -1,7 +1,7 @@
 const express = require("express");
 const config = require("config");
 const router = express.Router();
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");

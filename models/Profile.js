@@ -5,6 +5,9 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  band: {
+    type: String,
+  },
   country: {
     type: String,
   },
@@ -24,16 +27,20 @@ const ProfileSchema = new mongoose.Schema({
   },
   status: {
     type: String,
+    required: true,
   },
   experience: [
     {
       title: {
         type: String,
       },
-      company: {
+      band: {
         type: String,
       },
-      location: {
+      country: {
+        type: String,
+      },
+      city: {
         type: String,
       },
       from: {
@@ -55,15 +62,24 @@ const ProfileSchema = new mongoose.Schema({
     {
       school: {
         type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+      },
+      city: {
+        type: String,
       },
       degree: {
         type: String,
+        required: true,
       },
       fieldofstudy: {
         type: String,
       },
       from: {
         type: Date,
+        required: true,
       },
       to: {
         type: Date,
@@ -103,4 +119,4 @@ const ProfileSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("user", ProfileSchema);
+module.exports = mongoose.model("profile", ProfileSchema);
