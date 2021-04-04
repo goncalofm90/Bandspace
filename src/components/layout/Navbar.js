@@ -1,17 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import navbarimage from "../../public/navbarimage.jpg";
 
 const NavBar = () => {
   return (
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fas fa-music"></i> Bandspace
+          <img
+            style={{ width: "10%", height: "10%" }}
+            src={navbarimage}
+            alt=""
+          />{" "}
+          Bandspace
         </Link>
       </h1>
       <ul>
-        <li Link>
-          <Link to="profiles.html">Musicians</Link>
+        <li>
+          <Link to="#">Musicians</Link>
         </li>
         <li>
           <Link to="/register">Register</Link>
