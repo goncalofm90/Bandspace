@@ -34,12 +34,19 @@ router.post(
     auth,
     [
       check("status", "Status required").not().isEmpty(),
-      check("instruments", "instruments required").not().isEmpty(),
+      check(
+        "instruments",
+        "Instruments required, if you don't play any, just type none."
+      )
+        .not()
+        .isEmpty(),
+      check("bio", "Bio required").not().isEmpty(),
     ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log(errors);
       return res.status(400).json({ errors: errors.array() });
     }
     const {
@@ -226,7 +233,7 @@ router.put(
   [
     auth,
     [
-      check("school", "Shoold is required").not().isEmpty(),
+      check("school", "School is required").not().isEmpty(),
       check("degree", "Degree is required").not().isEmpty(),
       check("from", "From date is required.").not().isEmpty(),
     ],

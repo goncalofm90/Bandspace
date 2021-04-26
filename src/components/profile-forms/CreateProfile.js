@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import connect from "react-redux";
+import { createProfile } from "../../actions/profile";
+import { connect } from "react-redux";
 
-const CreateProfile = (props) => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     band: "",
     country: "",
@@ -37,8 +39,14 @@ const CreateProfile = (props) => {
 
   const [displaySocial, setDisplaySocial] = useState(false);
 
-  const onChange = (e) =>
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
 
   return (
     <>
@@ -48,18 +56,22 @@ const CreateProfile = (props) => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <div className="form-group">
-          <select name="status" value={status} onChange={(e) => onChange(e)}>
+          <select
+            name="status"
+            value={status}
+            onChange={(e) => handleChange(e)}
+          >
             <option value="0">
               * Select Most Relevant Professional Status
             </option>
-            <option value="Developer">Freelancer</option>
-            <option value="Senior Developer">Roadie</option>
+            <option value="Freelancer">Freelancer</option>
+            <option value="Roadie">Roadie</option>
             <option value="Manager">Manager</option>
             <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Resident/Band Member</option>
+            <option value="Instructor or Teacher">Instructor or Teacher</option>
+            <option value="Resident/Band Member">Resident/Band Member</option>
             <option value="Other">Other</option>
           </select>
           <small className="form-text">
@@ -72,7 +84,7 @@ const CreateProfile = (props) => {
             placeholder="Band"
             name="band"
             value={band}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           />
           <small className="form-text">
             Could be your own band or one you work for
@@ -84,7 +96,7 @@ const CreateProfile = (props) => {
             placeholder="Website"
             name="website"
             value={website}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           />
           <small className="form-text">
             Could be your own or a band website
@@ -96,7 +108,7 @@ const CreateProfile = (props) => {
             placeholder="Country"
             name="country"
             value={country}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           />
           <small className="form-text">Country (eg. Portugal)</small>
         </div>
@@ -106,7 +118,7 @@ const CreateProfile = (props) => {
             placeholder="City"
             name="city"
             value={city}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           />
           <small className="form-text">City (eg. Lisbon)</small>
         </div>
@@ -116,7 +128,7 @@ const CreateProfile = (props) => {
             placeholder="* Instruments"
             name="instruments"
             value={instruments}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           />
           <small className="form-text">
             Please use comma separated values (eg.
@@ -125,10 +137,10 @@ const CreateProfile = (props) => {
         </div>
         <div className="form-group">
           <textarea
-            placeholder="Bio"
+            placeholder="* Bio"
             name="bio"
             value={bio}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => handleChange(e)}
           ></textarea>
           <small className="form-text">Tell us a little about yourself</small>
         </div>
@@ -153,7 +165,7 @@ const CreateProfile = (props) => {
                 placeholder="Twitter URL"
                 name="twitter"
                 value={twitter}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -164,7 +176,7 @@ const CreateProfile = (props) => {
                 placeholder="Facebook URL"
                 name="facebook"
                 value={facebook}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -175,7 +187,7 @@ const CreateProfile = (props) => {
                 placeholder="YouTube URL"
                 name="youtube"
                 value={youtube}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -186,7 +198,7 @@ const CreateProfile = (props) => {
                 placeholder="Instagram URL"
                 name="instagram"
                 value={instagram}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -197,7 +209,7 @@ const CreateProfile = (props) => {
                 placeholder="Spotify URL"
                 name="spotify"
                 value={spotify}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
 
@@ -208,7 +220,7 @@ const CreateProfile = (props) => {
                 placeholder="Soundcloud URL"
                 name="soundcloud"
                 value={soundcloud}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
           </>
@@ -222,6 +234,8 @@ const CreateProfile = (props) => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(withRouter(CreateProfile));
