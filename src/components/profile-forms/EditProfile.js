@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import { createProfile } from "../../actions/profile";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 
-const CreateProfile = ({ createProfile, history }) => {
+const initialState = {
+  band: "",
+  country: "",
+  city: "",
+  instruments: "",
+  bio: "",
+  website: "",
+  status: "",
+  twitter: "",
+  youtube: "",
+  facebook: "",
+  spotify: "",
+  instagram: "",
+  soundcloud: "",
+};
+
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  history,
+  getCurrentProfile,
+}) => {
   const [formData, setFormData] = useState({
     band: "",
     country: "",
@@ -45,8 +66,27 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, profile ? true : false);
+    console.log(formData);
   };
+
+  //Load profile state and update the data in it
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      //since instruments is an array we gotta join the info and then set the data
+      if (Array.isArray(profileData.instruments))
+        profileData.instruments = profile.instruments.join(", ");
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   return (
     <>
@@ -234,8 +274,16 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile));
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);
