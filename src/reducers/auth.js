@@ -6,6 +6,7 @@ import {
   USER_LOADED,
   LOGOUT,
   AUTH_ERROR,
+  ACCOUNT_DELETED,
 } from "../actions/constants";
 
 const initialState = {
@@ -29,6 +30,7 @@ export default function handleRegister(state = initialState, action) {
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
+    case ACCOUNT_DELETED:
       localStorage.removeItem("token");
       return {
         ...state,
