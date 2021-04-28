@@ -344,10 +344,13 @@ button {
 .table td {
   padding: 1rem;
   text-align: left;
+  border: 0.1px solid rgba(24, 23, 23, 0.5);
+  border-radius: 4px;
 }
 
 .table th {
-  background: var(--light-color);
+  background: var(--primary-color);
+  color: white;
 }
 
 /* Navbar */

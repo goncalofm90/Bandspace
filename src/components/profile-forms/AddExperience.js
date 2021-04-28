@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 import { addExperience } from "../../actions/profile";
 
 const AddExperience = ({ addExperience, history }) => {
@@ -35,6 +36,9 @@ const AddExperience = ({ addExperience, history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addExperience(formData, history);
+    setTimeout(() => {
+      history.push("/dashboard");
+    }, 2000);
   };
 
   return (
@@ -124,9 +128,9 @@ const AddExperience = ({ addExperience, history }) => {
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
-        </a>
+        </Link>
       </form>
     </>
   );
@@ -136,4 +140,4 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(AddExperience);
+export default connect(null, { addExperience })(withRouter(AddExperience));
