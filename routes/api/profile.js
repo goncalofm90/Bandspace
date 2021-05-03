@@ -78,6 +78,7 @@ router.post(
         .split(",")
         .map((instrument) => instrument.trim());
     }
+
     //social media object
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;

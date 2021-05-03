@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Spinner } from "../layout/Spinner";
 import { Link, withRouter } from "react-router-dom";
+import ProfileTop from "./ProfileTop.js";
+import ProfileAbout from "./ProfileAbout.js";
 import { getProfileById } from "../../actions/profile";
 
 const Profile = ({
@@ -21,16 +23,20 @@ const Profile = ({
         <Spinner />
       ) : (
         <>
-          <Link to="/profiles" className="btn btn-primary">
+          <Link to="/profiles" className="btn btn-profile">
             Browse other Musicians
           </Link>
           {auth.isAuthenticated &&
             !auth.loading &&
             auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-primary">
+              <Link to="/edit-profile" className="btn btn-profile2">
                 Edit Profile
               </Link>
             )}
+          <div class="profile-top bg-primary p-2">
+            <ProfileTop profile={profile} />
+            <ProfileAbout profile={profile} />
+          </div>
         </>
       )}
     </>

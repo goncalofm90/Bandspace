@@ -164,7 +164,21 @@ img {
   color: #fff;
 }
 
-.btn-primary:hover {
+.btn-profile {
+  background: var(--primary-color);
+  color: #fff;
+  margin: 1em 0;
+}
+
+.btn-profile2 {
+  background: var(--primary-color);
+  color: #fff;
+  margin-left: 1em;
+}
+
+.btn-primary:hover,
+.btn-profile:hover,
+.btn-profile2:hover {
   animation: fill 0.5s forwards;
 }
 
