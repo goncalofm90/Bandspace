@@ -18,7 +18,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <>
           <h1 className="large text-primary">Musicians</h1>
           <p className="lead">
-            <i class="far fa-handshake"></i> Browse and connect with other
+            <i className="far fa-handshake"></i> Browse and connect with other
             professionals of the music industry.
           </p>
           <div className="profiles">

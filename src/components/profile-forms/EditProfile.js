@@ -67,7 +67,6 @@ const EditProfile = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, profile ? true : false);
-    console.log(formData);
   };
 
   //Load profile state and update the data in it
