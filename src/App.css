@@ -520,7 +520,7 @@ body {
 .profile-edu > div {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: #ccc 1px dotted;
+  border-bottom: #ccc 1px solid;
 }
 
 .profile-exp > div:last-child,

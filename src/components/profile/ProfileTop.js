@@ -21,22 +21,22 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div class="profile-top bg-primary p-2">
-      <img class="round-img my-1" src={avatar} alt="" />
-      <h1 class="large">{name}</h1>
-      <p class="lead">
+    <div className="profile-top bg-primary p-2">
+      <img className="round-img my-1" src={avatar} alt="" />
+      <h1 className="large">{name}</h1>
+      <p className="lead">
         {status} {band && <span> at {band}</span>}
       </p>
       <p>{country && <span>{country}</span>}</p>
       <p>{city && <span>{city}</span>}</p>
-      <div class="icons my-1">
+      <div className="icons my-1">
         {website && (
           <a
             href={urlToRender(website)}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fas fa-globe fa-2x"></i>
+            <i className="profilesocial fas fa-globe fa-2x"></i>
           </a>
         )}
         {social && social.twitter && (
@@ -45,7 +45,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-twitter fa-2x"></i>
+            <i className="profilesocial fab fa-twitter fa-2x"></i>
           </a>
         )}
         {social && social.facebook && (
@@ -54,7 +54,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-facebook fa-2x"></i>
+            <i className="profilesocial fab fa-facebook fa-2x"></i>
           </a>
         )}
         {social && social.spotify && (
@@ -63,7 +63,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-spotify fa-2x"></i>
+            <i className="profilesocial fab fa-spotify fa-2x"></i>
           </a>
         )}
         {social && social.soundcloud && (
@@ -72,7 +72,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-soundcloud fa-2x"></i>
+            <i className="profilesocial fab fa-soundcloud fa-2x"></i>
           </a>
         )}
         {social && social.youtube && (
@@ -81,7 +81,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-youtube fa-2x"></i>
+            <i className="profilesocial fab fa-youtube fa-2x"></i>
           </a>
         )}
         {social && social.instagram && (
@@ -90,7 +90,7 @@ const ProfileTop = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="profilesocial fab fa-instagram fa-2x"></i>
+            <i className="profilesocial fab fa-instagram fa-2x"></i>
           </a>
         )}
       </div>

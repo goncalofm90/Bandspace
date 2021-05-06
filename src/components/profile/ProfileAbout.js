@@ -9,20 +9,20 @@ const ProfileAbout = ({
   },
 }) => {
   return (
-    <div class="profile-about bg-light p-2">
+    <div className="profile-about bg-light p-2">
       {bio && (
         <>
           {/* display only first name */}
-          <h2 class="text-primary">{name.trim().split(" ")[0]}'s Bio</h2>
+          <h2 className="text-primary">{name.trim().split(" ")[0]}'s Bio</h2>
           <p>{bio}</p>
-          <div class="line"></div>
-          <h2 class="text-primary">
-            <i class="fa fa-guitar"></i> Instruments
+          <div className="line"></div>
+          <h2 className="text-primary">
+            <i className="fa fa-guitar"></i> Instruments
           </h2>
         </>
       )}
 
-      <div class="skills">
+      <div className="skills">
         {instruments.map((instrument, index) => {
           return (
             <div key={index} className="p-1">
