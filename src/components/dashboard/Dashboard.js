@@ -22,7 +22,7 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <>
-      <h1 className="large text-primary">Dashboard</h1>
+      <h1 className="large text-primary">My Page</h1>
       <p className="lead">
         <i className="fas fa-user"> </i> Welcome {user && user.name}
       </p>
