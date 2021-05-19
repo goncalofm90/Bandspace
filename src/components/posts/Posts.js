@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/post";
-import PostItem from "./PostItem";
+import PostPreview from "./PostPreview";
 import PostForm from "./PostForm";
 import { Spinner } from "../layout/Spinner";
 
@@ -21,7 +21,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
       </p>
       <PostForm />
       {posts.map((post) => (
-        <PostItem key={post._id} post={post} />
+        <PostPreview key={post._id} post={post} />
       ))}
     </>
   );

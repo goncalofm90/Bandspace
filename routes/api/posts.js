@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
+const Profile = require("../../models/Profile");
 
 // POST api/posts
 // create post
@@ -18,11 +19,13 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select("-password");
+      let profile = await Profile.findOne({ user: req.user.id });
+
       const newPost = new Post({
         title: req.body.title,
         text: req.body.text,
         name: user.name,
-        avatar: user.avatar,
+        avatar: profile.avatar,
         user: req.user.id,
       });
 
@@ -160,11 +163,12 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select("-password");
       const post = await Post.findById(req.params.id);
+      let profile = await Profile.findOne({ user: req.user.id });
 
       const newComment = {
         text: req.body.text,
         name: user.name,
-        avatar: user.avatar,
+        avatar: profile.avatar,
         user: req.user.id,
       };
 

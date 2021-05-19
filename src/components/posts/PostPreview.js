@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 
-const PostItem = ({
+const PostPreview = ({
   addLike,
   removeLike,
   deletePost,
@@ -22,7 +22,6 @@ const PostItem = ({
     </div>
     <div>
       <h2 className="my-1">{title}</h2>
-      <p className="my-1">{text}</p>
       <p className="post-date">
         Posted on <Moment format="DD/MM/YYYY">{date}</Moment>
       </p>
@@ -67,11 +66,11 @@ const PostItem = ({
   </div>
 );
 
-PostItem.defaultProps = {
+PostPreview.defaultProps = {
   showActions: true,
 };
 
-PostItem.propTypes = {
+PostPreview.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
@@ -85,5 +84,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
-  PostItem
+  PostPreview
 );

@@ -280,6 +280,14 @@ img {
   height: 250px;
 }
 
+.round-imgpost {
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  object-fit: cover;
+  width: 100%;
+  height: 100px;
+}
+
 .line {
   height: 1px;
   background: #ccc;
