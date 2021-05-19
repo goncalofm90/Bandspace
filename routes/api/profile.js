@@ -50,6 +50,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
+      avatar,
       band,
       website,
       country,
@@ -67,6 +68,7 @@ router.post(
     // profile object
     const profileFields = {};
     profileFields.user = req.user.id;
+    if (avatar) profileFields.avatar = avatar;
     if (band) profileFields.band = band;
     if (website) profileFields.website = website;
     if (country) profileFields.country = country;
@@ -175,16 +177,8 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      title,
-      band,
-      country,
-      city,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, band, country, city, from, to, current, description } =
+      req.body;
 
     const newExp = {
       title,

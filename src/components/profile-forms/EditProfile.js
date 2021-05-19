@@ -4,7 +4,29 @@ import PropTypes from "prop-types";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 
+// Cloudinary Setup======================================
+const CloudinaryPreset = "xmofgph7";
+const CloudinaryId = "goncalofm90";
+
+async function uploadImage(file) {
+  const data = new FormData();
+  data.append("file", file);
+  data.append("upload_preset", CloudinaryPreset);
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CloudinaryId}/image/upload`,
+    {
+      method: "POST",
+      body: data,
+    }
+  );
+  const img = await res.json();
+  console.log(img);
+  return img.secure_url;
+}
+//=======================================================
+
 const initialState = {
+  avatar: "",
   band: "",
   country: "",
   city: "",
@@ -27,6 +49,7 @@ const EditProfile = ({
   getCurrentProfile,
 }) => {
   const [formData, setFormData] = useState({
+    avatar: "",
     band: "",
     country: "",
     city: "",
@@ -58,7 +81,18 @@ const EditProfile = ({
     soundcloud,
   } = formData;
 
+  const [uploadingImg, setUploadingImg] = useState(false);
   const [displaySocial, setDisplaySocial] = useState(false);
+
+  const handleFileChange = async (event) => {
+    const [file] = event.target.files;
+    if (!file) return;
+
+    setUploadingImg(true);
+    const uploadedUrl = await uploadImage(file);
+    setFormData({ ...formData, avatar: uploadedUrl });
+    setUploadingImg(false);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,6 +100,8 @@ const EditProfile = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (uploadingImg) return;
+    console.log(formData);
     createProfile(formData, history, profile ? true : false);
   };
 
@@ -96,6 +132,15 @@ const EditProfile = ({
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
+        <div>
+          <p>Upload an Avatar</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            disabled={uploadingImg}
+          />
+        </div>
         <div className="form-group">
           <select
             name="status"

@@ -11,13 +11,14 @@ const urlToRender = (link) => {
 
 const ProfileTop = ({
   profile: {
+    avatar,
     status,
     band,
     country,
     city,
     website,
     social,
-    user: { name, avatar },
+    user: { name },
   },
 }) => {
   return (
