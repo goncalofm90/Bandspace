@@ -133,7 +133,7 @@ const EditProfile = ({
       <small>* = required field</small>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <p>Upload an Avatar</p>
+          <p>Change Avatar</p>
           <input
             type="file"
             accept="image/*"
