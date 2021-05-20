@@ -20,9 +20,11 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         <i className="fas fa-user"></i>Welcome to the community
       </p>
       <PostForm />
-      {posts.map((post) => (
-        <PostPreview key={post._id} post={post} />
-      ))}
+      <div className="posts">
+        {posts.map((post) => (
+          <PostPreview key={post._id} post={post} />
+        ))}
+      </div>
     </>
   );
 };
