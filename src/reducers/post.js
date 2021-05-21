@@ -5,6 +5,7 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT,
   UPDATE_LIKES,
+  UPDATE_LIKES_COMMENT,
   DELETE_POST,
   ADD_POST,
 } from "../actions/constants";
@@ -71,6 +72,19 @@ export default function posts(state = initialState, action) {
           ...state.post,
           comments: state.post.comments.filter(
             (comment) => comment._id !== payload
+          ),
+        },
+        loading: false,
+      };
+    case UPDATE_LIKES_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.map((comment) =>
+            comment._id === payload.commentId
+              ? { ...comment, likes: payload.likes }
+              : comment
           ),
         },
         loading: false,

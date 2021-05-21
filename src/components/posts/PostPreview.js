@@ -30,7 +30,7 @@ const PostPreview = ({
         <>
           <button
             type="button"
-            className="btn btn-light"
+            className="btn-comment btn-light"
             onClick={(e) => addLike(_id)}
           >
             <i className="fas fa-thumbs-up"></i>
@@ -38,12 +38,12 @@ const PostPreview = ({
           </button>
           <button
             type="button"
-            className="btn btn-light"
+            className="btn-comment btn-light"
             onClick={(e) => removeLike(_id)}
           >
             <i className="fas fa-thumbs-down"></i>
           </button>
-          <Link to={`/posts/${_id}`} className="btn btn-primary">
+          <Link to={`/posts/${_id}`} className="btn-comment btn-primary">
             Open Discussion{" "}
             {comments.length > 0 && (
               <span className="comment-count">{comments.length}</span>
@@ -52,12 +52,12 @@ const PostPreview = ({
           {!auth.loading && user === auth.user._id && (
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn-comment btn-primary"
               onClick={(e) => {
                 deletePost(_id);
               }}
             >
-              Delete Discussion
+              <i class="far fa-trash-alt"></i>
             </button>
           )}
         </>

@@ -8,6 +8,7 @@ import {
   GET_POSTS,
   POST_ERROR,
   UPDATE_LIKES,
+  UPDATE_LIKES_COMMENT,
 } from "./constants";
 import { setAlert } from "./alert";
 
@@ -153,6 +154,42 @@ export const removeComment = (postId, commentId) => async (dispatch) => {
     dispatch({
       type: POST_ERROR,
       payload: { msg: error.response.data.msg, status: error.response.status },
+    });
+  }
+};
+
+//like comment
+export const addLikeComment = (postId, commentId) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `/api/posts/comment/like/${postId}/${commentId}`
+    );
+    dispatch({
+      type: UPDATE_LIKES_COMMENT,
+      payload: { commentId, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: "addLikeComment error", status: "404" },
+    });
+  }
+};
+
+//Unlike Comment
+export const removeLikeComment = (postId, commentId) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `/api/posts/comment/unlike/${postId}/${commentId}`
+    );
+    dispatch({
+      type: UPDATE_LIKES_COMMENT,
+      payload: { commentId, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: "removeLikeComment error", status: "404" },
     });
   }
 };
