@@ -11,6 +11,7 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, title, name, avatar, user, likes, comments, date },
+
   showActions,
 }) => (
   <div className="post bg-dark p-1 my-1">
@@ -22,47 +23,40 @@ const PostItem = ({
     </div>
     <div>
       <h2 className="my-1">{title}</h2>
-      <p className="my-1">{text}</p>
       <p className="post-date">
         Posted on <Moment format="DD/MM/YYYY">{date}</Moment>
       </p>
-
-      {showActions && (
-        <>
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={(e) => addLike(_id)}
-          >
-            <i className="fas fa-thumbs-up"></i>
-            {likes.length > 0 && <span>{likes.length}</span>}
-          </button>
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={(e) => removeLike(_id)}
-          >
-            <i className="fas fa-thumbs-down"></i>
-          </button>
-          <Link to={`/posts/${_id}`} className="btn btn-primary">
-            Open Discussion{" "}
-            {comments.length > 0 && (
-              <span className="comment-count">{comments.length}</span>
-            )}
-          </Link>
-          {!auth.loading && user === auth.user._id && (
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={(e) => {
-                deletePost(_id);
-              }}
-            >
-              Delete Discussion
-            </button>
-          )}
-        </>
+      {/* {auth.isAuthenticated &&
+      likes.filter((like) => like.user === auth.user._id).length > 0 ? (
+        <button
+          onClick={(e) => removeLike(_id)}
+          type="button"
+          className="btn-comment btn-primary"
+        >
+          <i className="far fa-arrow-alt-circle-up"></i>{" "}
+          <span>{likes.length}</span>
+        </button>
+      ) : (
+        <button
+          onClick={(e) => addLike(_id)}
+          type="button"
+          className="btn-comment btn-light"
+        >
+          <i className="far fa-arrow-alt-circle-up"></i>{" "}
+          <span>{likes.length}</span>
+        </button>
       )}
+      {!auth.loading && user === auth.user._id && (
+        <button
+          type="button"
+          className="btn-comment btn-primary"
+          onClick={(e) => {
+            deletePost(_id);
+          }}
+        >
+          <i className="far fa-trash-alt"></i>
+        </button>
+      )} */}
     </div>
   </div>
 );

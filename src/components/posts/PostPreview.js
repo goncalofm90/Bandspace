@@ -32,7 +32,8 @@ const PostPreview = ({
           type="button"
           className="btn-comment btn-primary"
         >
-          <i class="far fa-arrow-alt-circle-up"></i> <span>{likes.length}</span>
+          <i className="far fa-arrow-alt-circle-up"></i>{" "}
+          <span>{likes.length}</span>
         </button>
       ) : (
         <button
@@ -40,7 +41,8 @@ const PostPreview = ({
           type="button"
           className="btn-comment btn-light"
         >
-          <i class="far fa-arrow-alt-circle-up"></i> <span>{likes.length}</span>
+          <i className="far fa-arrow-alt-circle-up"></i>{" "}
+          <span>{likes.length}</span>
         </button>
       )}
 
@@ -58,7 +60,7 @@ const PostPreview = ({
             deletePost(_id);
           }}
         >
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </button>
       )}
     </div>
