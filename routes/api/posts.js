@@ -150,7 +150,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
 });
 
 // POST api/posts/comment/:id
-// create post
+// create comment
 router.post(
   "/comment/:id",
   [auth, [check("text", "Text is required.").not().isEmpty()]],
@@ -183,7 +183,7 @@ router.post(
 );
 
 // DELETE api/posts/comment/:id/:comment_id
-// delete post
+// delete comment
 router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   try {
     //find post
