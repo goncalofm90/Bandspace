@@ -27,37 +27,6 @@ const PostItem = ({
       <p className="post-date">
         Posted on <Moment format="DD/MM/YYYY">{date}</Moment>
       </p>
-      {/* {auth.isAuthenticated &&
-      likes.filter((like) => like.user === auth.user._id).length > 0 ? (
-        <button
-          onClick={(e) => removeLike(_id)}
-          type="button"
-          className="btn-comment btn-primary"
-        >
-          <i className="far fa-arrow-alt-circle-up"></i>{" "}
-          <span>{likes.length}</span>
-        </button>
-      ) : (
-        <button
-          onClick={(e) => addLike(_id)}
-          type="button"
-          className="btn-comment btn-light"
-        >
-          <i className="far fa-arrow-alt-circle-up"></i>{" "}
-          <span>{likes.length}</span>
-        </button>
-      )}
-      {!auth.loading && user === auth.user._id && (
-        <button
-          type="button"
-          className="btn-comment btn-primary"
-          onClick={(e) => {
-            deletePost(_id);
-          }}
-        >
-          <i className="far fa-trash-alt"></i>
-        </button>
-      )} */}
     </div>
   </div>
 );
