@@ -23,6 +23,7 @@ const PostItem = ({
     </div>
     <div>
       <h2 className="my-1">{title}</h2>
+      <p className="my-1">{text}</p>
       <p className="post-date">
         Posted on <Moment format="DD/MM/YYYY">{date}</Moment>
       </p>

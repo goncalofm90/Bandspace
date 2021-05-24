@@ -22,6 +22,7 @@ import { loadUser } from "./actions/auth";
 import { Provider } from "react-redux";
 import store from "./store";
 import { LOGOUT } from "./actions/constants";
+import NotFound from "./components/layout/NotFound";
 
 const App = () => {
   useEffect(() => {
@@ -72,6 +73,7 @@ const App = () => {
               />
               <PrivateRoute exact path="/posts" component={Posts} />
               <PrivateRoute exact path="/posts/:id" component={Post} />
+              <Route component={NotFound} />
             </Switch>
           </section>
         </>
