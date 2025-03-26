@@ -119,6 +119,6 @@ Check `package.json` for available scripts, likely including:
 Distributed under the MIT License.
 
 ## Contact
-Gonçalo Mendes - goncalofm90@email.com
+Gonçalo Mendes - goncalofm90@gmail.com
 
 Project Link: [https://github.com/goncalofm90/Bandspace](https://github.com/goncalofm90/Bandspace)
